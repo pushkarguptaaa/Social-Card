@@ -1,12 +1,12 @@
 
-export const Card = ({name, description, socialMedia, interests}) => {
+export const Card = ({card}) => {
     return (
         <div style={cardStyle}>
-            <h2>{name}</h2>
-            <p>{description}</p>
+            <h2>{card.name}</h2>
+            <p>{card.description}</p>
 
             <div style={socialMediaStyle}>
-                {socialMedia.map(handle =>(
+                {card.socialMedia.map(handle =>(
                     <a href = {handle.link} target="_blank" rel="noopener noreferrer">
                         {handle.platform}
                     </a>
@@ -16,7 +16,7 @@ export const Card = ({name, description, socialMedia, interests}) => {
             <div>
                 <h3>Interests:</h3>
                 <ul>
-                    {interests.map(interest => (
+                    {card.interests.map(interest => (
                         <li>{interest}</li>
                     ))}
                 </ul>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { CardForm } from "../components/CardForm"
-import { Card } from "../components/Card"
+import { CardList } from "../components/CardList"
 
 function App() {
 
@@ -32,14 +32,19 @@ function App() {
 
   })
 
+  const updateCard = (() => {
+
+  })
+
+  const deleteCard = (() => {
+    
+  })
+
   return (
     <div>
       <h1>Card Management App</h1>
-      <CardForm addCard = {addCard}/>
-
-      {cards.map((card) => (
-        <Card name={card.name} description={card.description} socialMedia={card.socialMedia} interests={card.interests}/>
-      ))}
+      <CardForm addCard={addCard}/>
+      <CardList cards={cards} updateCard={updateCard} deleteCard={deleteCard}/>
     </div>
   )
 }
