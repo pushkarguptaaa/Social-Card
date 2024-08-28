@@ -9,11 +9,17 @@ export const CardList = (({cards, updateCard, deleteCard})=> {
     const [interests, setInterests] = useState([""])
 
     const handleUpdate= (() => {
-
+        const updatedCard = {_id: editCardId, name, description, socialMedia, interests}
+        updateCard(updatedCard)
+        setEditCardId(null)
     })
 
     const handleEdit = ((card) => {
-        
+        setEditCardId(card._id)
+        setName(card.name)
+        setDescription(card.description)
+        setSocialMedia(card.socialMedia)
+        setInterests(card.interests)
     })
 
     return(

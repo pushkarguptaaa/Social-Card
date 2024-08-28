@@ -32,12 +32,29 @@ function App() {
 
   })
 
-  const updateCard = (() => {
-
+  const updateCard = ((updatedCard) => {
+    fetch(`http://localhost:3000/cards/${updatedCard._id}`,{
+      method: "PUT",
+      body: JSON.stringify(updatedCard),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => async () => {
+      const newCard = res.json()
+      setCards(cards.map(card => newCard._id === card._id ? newCard : card))
+    })
+    .catch((error) => console.error('Error updating card:', error))
   })
 
-  const deleteCard = (() => {
-    
+  const deleteCard = ((id) => {
+    fetch(`http://localhost:3000/cards/${id}`,{
+      method: "DELETE"
+    })
+    .then(()=>{
+      setCards(cards.filter(card => card._id !== id))
+    })
+    .catch((error) => console.error('Error deleting card:', error))
   })
 
   return (
